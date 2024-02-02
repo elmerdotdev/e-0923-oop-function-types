@@ -86,3 +86,42 @@ function getInfo(field: string | number): string {
 }
 
 console.log(getInfo('John'))
+
+// Function Type Alias
+type CoolFuncType = (message: number, age: number) => void
+
+const hi2: CoolFuncType = function(message, age) {
+  console.log(message, age)
+}
+
+const hi3: CoolFuncType = function(message, age) {
+  console.log(message, age)
+}
+
+// Function As Types
+function add(num1: number, num2: number): number {
+  return num1 + num2
+}
+
+let sumOfNumbers: (num1: number, num2: number) => number
+sumOfNumbers = add
+console.log(sumOfNumbers(10, 20))
+
+// typeof operator
+function subtract(num1: number, num2: number) {
+  return num1 - num2
+}
+
+const addition: typeof subtract = function (num1, num2) {
+  return num1 + num2
+}
+
+// Function Types & Callbacks
+function addAndHandle(num1: number, num2: number, callback: (num: number) => void) {
+  const result = num1 + num2
+  callback(result)
+}
+
+addAndHandle(10, 20, (result) => {
+  console.log(result)
+})
